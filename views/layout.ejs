@@ -9,6 +9,16 @@
 </head>
 
 <body>
+    <% if (userId) { %>
+        <p>Signed in as <%= user.username %></p>
+        <form action="/logout" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button>logout</button>
+        </form>
+
+        <% } else { %>
+            <a href="/login">login</a>
+            <% } %>
     <h1><a href="/">Take A Hike</a></h1>
     <%- body %>
         <footer>&copy; 2023</footer>

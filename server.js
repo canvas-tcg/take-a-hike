@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const express = require("express")
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000;
 const expressLayouts = require("express-ejs-layouts")
 const requestLogger = require("./middlewares/request_logger")
 const methodOverride = require('method-override')
@@ -15,6 +15,7 @@ const bcrypt = require('bcrypt');
 
 const indexRouter = require('./routes/index')
 const hikesRouter = require('./routes/hikes')
+const sessionsRouter = require('./routes/sessions')
 
 app.set("view engine", "ejs")
 
@@ -33,7 +34,7 @@ app.use(methodOverride(function (req, res) {
 app.use(requestLogger);
 
 app.use(session({
-    secret: 'keyboard cat',
+    secret: process.env.SESSION_SECRET || 'keyboard cat',
     resave: false,
     saveUninitialized: true
 }))
@@ -44,6 +45,7 @@ app.use(expressLayouts)
 
 app.use("/", indexRouter)
 app.use("/hikes", hikesRouter)
+app.use("/", sessionsRouter)
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`)

@@ -5,7 +5,7 @@
 <h1>let's explore</h1>
 <% for (let hike of hikes) { %>
     <div class="ui-card">
-        <img src="hike.image_url" alt="a photo of <%= hike.name %>">
+        <img src=<%= hike.image_url %> alt="a photo of <%= hike.name %>">
         <section class="content">
             <h2>
                 <a href="/hikes/<%= hike.id %>">
@@ -23,3 +23,4 @@
     </div>
 
 <% } %>
+</section>
