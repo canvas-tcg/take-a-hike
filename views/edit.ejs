@@ -2,18 +2,18 @@
 <%= hike.image_url %>
 
 
-<form action="/hikes/<%=hike.id%>" method="post">
-    <input type="hidden" value="put" name="_method">
-    <label for="">name</label>
-    <input type="text" name="name" value="<%= hike.name %>">
-    <label for="">image URL</label>
-    <input type="text" name="image_url" value="<%= hike.image_url %>">
-    <label for="">location</label>
-    <input type="text" name="location" value="<%= hike.location %>">
-    <label for="">length (km)</label>
-    <input type="number" name="length" value="<%= hike.length %>">
-    <label for="">number of days to complete</label>
-    <input type="number" name="days" value="<%= hike.days %>">
-    <button>update</button>
+    <form action="/hikes/<%=hike.id%>" method="post">
+        <input type="hidden" value="put" name="_method">
+        <label for="">name</label>
+        <input type="text" name="name" value="<%= hike.name %>">
+        <label for="">image URL</label>
+        <input type="text" name="image_url" value="<%= hike.image_url %>">
+        <label for="">location</label>
+        <input type="text" name="location" value="<%= hike.location %>">
+        <label for="">length (km)</label>
+        <input type="number" name="length" value="<%= hike.length %>">
+        <label for="">number of days to complete</label>
+        <input type="number" name="days" value="<%= hike.days %>">
+        <button>update</button>
 
-</form>
+    </form>

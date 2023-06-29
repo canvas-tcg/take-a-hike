@@ -9,18 +9,31 @@
 </head>
 
 <body>
-    <% if (userId) {%>
-        
-        <p>Signed in as <%= user.username %></p>
-        <form action="/logout" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <button>logout</button>
-        </form>
+    <div class="head">
+        <h1><a href="/">take a hike</a></h1>
+        <div class="login-signup"></div>
+        <% if (userId) {%>
+            <div class="user-info">
+                <p>Signed in as <%= user.username %>
+                </p>
+                <form action="/logout" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button>logout</button>
+                </form>
+                <div class="links">
+                    <a href="/likes">saved trails</a>
+                    |
+                    <a href="/hikes/new">share a trail</a>
+                    |
+                    <a href="/">home</a>
+                </div>
+            </div>
+            <% } else { %>
+                <a href="/login">login or sign up</a>
+                <% } %>
+        </div>
+    </div>
 
-        <% } else { %>
-            <a href="/login">login or sign up</a>
-            <% } %>
-    <h1><a href="/">Take A Hike</a></h1>
     <%- body %>
         <footer>&copy; 2023</footer>
 </body>

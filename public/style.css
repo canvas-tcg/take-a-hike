@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: lavenderblush;
+    background-color: white;
 }
 
 img {
@@ -12,22 +12,55 @@ img {
 
 a {
     text-decoration: none;
-    
+
 }
-/* a:visited{
-    color: cornflowerblue;
-} */
 
+a:visited {
+    color: #46494c;
+}
 
+.head {
+    text-align: center;
+}
+
+h1 {
+    display: inline-block;
+}
+
+.login-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.user-info button {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.user-info a {
+    margin: 0 5px 10px 5px;
+}
 
 .ui-card * {
-    /* border: 1px solid red; */
-    background-color: lavender;
+
+    background-color: #e9ecef;
     
+
 }
 
 .ui-card {
-    /* border: 1px solid red; */
+
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 10px;
@@ -37,6 +70,7 @@ a {
     width: 100%;
     display: block;
 }
+
 .ui-card>h2 {
     display: flex;
     justify-content: space-between;
@@ -53,6 +87,33 @@ a {
     padding: 10px;
 }
 
+.delete-button {
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #888;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.delete-button:hover {
+    background-color: #ddd;
+}
+
+.edit-link {
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #888;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.edit-link:hover {
+    background-color: #ddd;
+}
+
+
 @media (min-width: 40rem) {
     .all-hikes {
         display: grid;
@@ -60,6 +121,7 @@ a {
         gap: 10px;
     }
 }
+
 @media (min-width: 60rem) {
     .all-hikes {
         display: grid;

@@ -2,21 +2,18 @@
 
 <section class="all-hikes">
     <% for (let hike of hikes) { %>
-
         <div class="ui-card">
             <img src=<%=hike.image_url %> alt="a photo of <%= hike.name %>">
                 <section class="content">
                     <h2>
-                        <a href="/hikes/<%= hike.id %>">
+                        <a href="/hikes/<%= hike.hike_id %>">
                             <%= hike.name %>
                         </a>
-
                     </h2>
                     <h4>
                         <%= hike.location %>
                     </h4>
                 </section>
-
                 <footer class="content">
                     <span>
                         <%= hike.length %> km
@@ -26,17 +23,15 @@
                     </span>
                 </footer>
                 <footer class="content">
-                    <% if (hike.user_id === userId) { %>
-                        <span><a href="/hikes/<%= hike.id %>/edit">edit</a></span>
+                    <% if (hikes.user_id===userId) { %>
+                        <span><a href="/hikes/<%= hike.hike_id %>/edit">edit</a></span>
                         <% } %>
-
                             <span>
-                                <form action="/likes/<%= hike.id %>" method="post">
+                                <form action="/<%= hike.id %>" method="post">
                                     <input type="hidden" value="delete" name="_method">
                                     <button>remove from wishlist</button>
+                                </form>
                             </span>
-
                 </footer>
-
         </div>
         <% } %>

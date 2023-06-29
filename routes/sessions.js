@@ -16,7 +16,7 @@ router.post("/login", (req, res) => {
         if (err) {
             console.log(err)
         }
-        if (dbRes.rows.length === 0){
+        if (dbRes.rows.length === 0) {
             res.render("login")
             return
         }
@@ -35,6 +35,5 @@ router.delete("/logout", (req, res) => {
     req.session.userId = undefined
     res.redirect("/login")
 })
-
 
 module.exports = router

@@ -4,11 +4,11 @@ const db = require("../db/index.js");
 
 router.get("/", (req, res) => {
     db.query("SELECT * FROM hikes;", (err, dbRes) => {
-        if (err){
+        if (err) {
             console.log(err)
         }
         let hikes = dbRes.rows
-        res.render("home", {hikes: hikes})
+        res.render("home", { hikes: hikes })
     })
 })
 

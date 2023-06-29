@@ -1,5 +1,5 @@
 <div class="ui-card">
-    <img src=<%=hike.image_url %> alt="a photo of <%= hike.name %>">
+    <img src=<%=hike.image_url %> alt="a photo of <%= hike.name %>" class="show-image">
         <section class="content">
             <h2>
                 <span>
@@ -14,7 +14,6 @@
                         <button>💙</button>
                     </form>
                 </span>
-
 
             </h2>
             <h4>
@@ -31,13 +30,13 @@
             </span>
         </footer>
         <footer class="content">
-            <% if (hike.user_id===user_id) { %>
-                <span><a href="/hikes/<%= hike.id %>/edit">edit</a></span>
+            <% if (hike.user_id===userId) { %>
+                <span><a href="/hikes/<%= hike.id %>/edit" class="edit-link">edit</a></span>
 
                 <span>
                     <form action="/hikes/<%= hike.id %>" method="post">
                         <input type="hidden" value="delete" name="_method">
-                        <button>delete</button>
+                        <button class="delete-button">delete</button>
                 </span>
                 <% } %>
         </footer>

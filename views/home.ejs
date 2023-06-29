@@ -1,46 +1,43 @@
-<% if (userId) { %>
-    <a href="/hikes/new">Share a hike</a>
-    <% } %>
+<h2>find your next trail</h2>
+<section class="all-hikes">
+    <% for (let hike of hikes) { %>
 
-        <h1>let's explore</h1>
-        <section class="all-hikes">
-            <% for (let hike of hikes) { %>
+        <div class="ui-card">
+            <img src=<%=hike.image_url %> alt="a photo of <%= hike.name %>">
+                <section class="content">
+                    <h2>
+                        <a href="/hikes/<%= hike.id %>">
+                            <%= hike.name %>
+                        </a>
 
-                <div class="ui-card">
-                    <img src=<%=hike.image_url %> alt="a photo of <%= hike.name %>">
-                        <section class="content">
-                            <h2>
-                                <a href="/hikes/<%= hike.id %>">
-                                    <%= hike.name %>
-                                </a>
+                    </h2>
+                    <h4>
+                        <%= hike.location %>
+                    </h4>
+                </section>
 
-                            </h2>
-                            <h4>
-                                <%= hike.location %>
-                            </h4>
-                        </section>
+                <footer class="content">
+                    <span>
+                        <%= hike.length %> km
+                    </span>
+                    <span>
+                        <%= hike.days %> days
+                    </span>
+                </footer>
+                <footer class="content">
+                    <% if (hike.user_id===userId) { %>
+                        <span><a href="/hikes/<%= hike.id %>/edit" class="edit-link">edit</a></span>
 
-                        <footer class="content">
-                            <span>
-                                <%= hike.length %> km
-                            </span>
-                            <span>
-                                <%= hike.days %> days
-                            </span>
-                        </footer>
-                        <footer class="content">
-                            <% if (hike.user_id===userId) { %>
-                                <span><a href="/hikes/<%= hike.id %>/edit">edit</a></span>
+                        <span>
+                            <form action="/hikes/<%= hike.id %>" method="post">
+                                <input type="hidden" value="delete" name="_method">
+                                <button class="delete-button">delete</button>
+                            </form>
+                        </span>
+                        <% } %>
+                </footer>
 
-                                <span>
-                                    <form action="/hikes/<%= hike.id %>" method="post">
-                                        <input type="hidden" value="delete" name="_method">
-                                        <button>delete</button>
-                                </span>
-                                <% } %>
-                        </footer>
+        </div>
 
-                </div>
-
-                <% } %>
-        </section>
+        <% } %>
+</section>

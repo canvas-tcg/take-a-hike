@@ -11,23 +11,16 @@ router.get("/signup", (req, res) => {
 router.post("/signup", (req, res) => {
     let username = req.body.username
     let email = req.body.email
-    // db.query(email, (err, dbRes) => {
-    //     if (err){
-    //         console.log(err)
-    //     } if (email === dbRes.rows[0].email){
-    //         res.redirect("/login")
-    //     } return
-    // })
     let plainTextPassword = req.body.password
     let saltRounds = 10
-    
-    bcrypt.genSalt(saltRounds, (err, salt) =>{
+
+    bcrypt.genSalt(saltRounds, (err, salt) => {
         bcrypt.hash(plainTextPassword, salt, (err, hash) => {
             let sql = `INSERT INTO users (username, email, password_digest)
             values ('${username}','${email}', '${hash}');`
             console.log(sql)
-            db.query(sql, (err, res)  => {
-                if (err){
+            db.query(sql, (err, res) => {
+                if (err) {
                     console.log(err)
                 } else {
                     console.log('new user created')
@@ -35,7 +28,7 @@ router.post("/signup", (req, res) => {
             })
 
         })
-    } )
+    })
     res.redirect("/login")
 })
 

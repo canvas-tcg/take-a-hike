@@ -2,13 +2,11 @@ const express = require('express');
 const router = express.Router();
 const db = require("../db/index.js");
 const checkLogin = require('../middlewares/check_login.js')
-// ADD checkLogin after new, 
+
 router.get("/new", checkLogin, (req, res) => {
     res.render("new")
 })
 
-
-// Add checkLogin after "/",
 router.post("/", checkLogin, (req, res) => {
     let name = req.body.name
     let image_url = req.body.image_url
@@ -22,7 +20,7 @@ router.post("/", checkLogin, (req, res) => {
     RETURNING id;`
 
     db.query(sql, [name, image_url, location, length, days, req.session.userId], (err, dbRes) => {
-        if (err){
+        if (err) {
             console.log(err)
         }
         res.redirect(`/hikes/${dbRes.rows[0].id}`)
@@ -40,18 +38,17 @@ router.get("/:id", (req, res) => {
     })
 })
 
-// Add checkLogin after edis in router.get function 
 router.get("/:id/edit", checkLogin, (req, res) => {
     db.query(`SELECT * FROM hikes WHERE id = $1;`, [req.params.id], (err, dbRes) => {
         if (err) {
             console.log(err)
         }
         let hike = dbRes.rows[0]
-        res.render("edit", { hike: hike})
+        res.render("edit", { hike: hike })
     })
 })
 
-router.put("/:id", (req, res)  => {
+router.put("/:id", (req, res) => {
     let name = req.body.name
     let image_url = req.body.image_url
     let location = req.body.location
@@ -77,12 +74,13 @@ router.put("/:id", (req, res)  => {
 
 })
 
-// ADD checkLogin after id
 router.delete("/:id", checkLogin, (req, res) => {
-    db.query(`DELETE FROM hikes WHERE id = $1;`, [req.params.id], (err, dbRes) => {
+    let sql = `DELETE FROM hikes WHERE id = $1;`
+    console.log(`sql = ${sql}`)
+    db.query(sql, [req.params.id], (err, dbRes) => {
+        console.log(req.params.id)
         res.redirect("/")
     })
 })
-
 
 module.exports = router
