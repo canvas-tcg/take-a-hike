@@ -1,32 +1,45 @@
-<h2>Hike details</h2>
-
 <div class="ui-card">
-    <img src="<%= hike.image_url %>" alt="a photo of <%= hike.name %>">
-    <section class="content">
-        <h2>
-            <%= hike.name %>
+    <img src=<%=hike.image_url %> alt="a photo of <%= hike.name %>">
+        <section class="content">
+            <h2>
+                <span>
+                    <a href="/hikes/<%= hike.id %>">
+                        <%= hike.name %>
+                    </a>
+                </span>
 
-                </a>
-        </h2>
-        <h4>
-            <%= hike.location %>
-        </h4>
-    </section>
-    <footer class="content">
-        <span>
-            <%= hike.length %> km
-        </span>
-        <span>
-            <%= hike.days %> days
-        </span>
+                <span>
+                    <form action="/likes" method="post">
+                        <input type="hidden" value="<%= hike.id %>" name="hike_id">
+                        <button>💙</button>
+                    </form>
+                </span>
 
-    </footer>
-    <span>
-        <form action="/hikes/<%= hike.id %>" method="post">
-            <input type="hidden" value="delete" name="_method">
-            <button>delete</button>
-    </span>
-    <span>
-        <a href="/hikes/<%= hike.id %>/edit">edit hike details</a>
-    </span>
+
+            </h2>
+            <h4>
+                <%= hike.location %>
+            </h4>
+        </section>
+
+        <footer class="content">
+            <span>
+                <%= hike.length %> km
+            </span>
+            <span>
+                <%= hike.days %> days
+            </span>
+        </footer>
+        <footer class="content">
+            <% if (hike.user_id===user_id) { %>
+                <span><a href="/hikes/<%= hike.id %>/edit">edit</a></span>
+
+                <span>
+                    <form action="/hikes/<%= hike.id %>" method="post">
+                        <input type="hidden" value="delete" name="_method">
+                        <button>delete</button>
+                </span>
+                <% } %>
+        </footer>
+
 </div>

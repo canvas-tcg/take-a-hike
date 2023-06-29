@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <% if (userId) { %>
+    <% if (userId) {%>
+        
         <p>Signed in as <%= user.username %></p>
         <form action="/logout" method="post">
             <input type="hidden" name="_method" value="delete">
@@ -17,7 +18,7 @@
         </form>
 
         <% } else { %>
-            <a href="/login">login</a>
+            <a href="/login">login or sign up</a>
             <% } %>
     <h1><a href="/">Take A Hike</a></h1>
     <%- body %>

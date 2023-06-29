@@ -16,6 +16,8 @@ const bcrypt = require('bcrypt');
 const indexRouter = require('./routes/index')
 const hikesRouter = require('./routes/hikes')
 const sessionsRouter = require('./routes/sessions')
+const signupRouter = require('./routes/signup')
+const likesRouter = require('./routes/likes')
 
 app.set("view engine", "ejs")
 
@@ -46,6 +48,8 @@ app.use(expressLayouts)
 app.use("/", indexRouter)
 app.use("/hikes", hikesRouter)
 app.use("/", sessionsRouter)
+app.use("/", signupRouter)
+app.use("/", likesRouter)
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`)

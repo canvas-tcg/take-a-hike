@@ -31,4 +31,10 @@ router.post("/login", (req, res) => {
     })
 })
 
+router.delete("/logout", (req, res) => {
+    req.session.userId = undefined
+    res.redirect("/login")
+})
+
+
 module.exports = router

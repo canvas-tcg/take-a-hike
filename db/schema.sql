@@ -17,6 +17,12 @@ CREATE TABLE hikes (
     user_id INTEGER
 );
 
+CREATE TABLE likes (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER,
+    hike_id INTEGER
+);
+
 
 
 INSERT INTO hikes(name, location, image_URL, length, days)

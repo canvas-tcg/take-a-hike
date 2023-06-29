@@ -37,6 +37,11 @@ a {
     width: 100%;
     display: block;
 }
+.ui-card>h2 {
+    display: flex;
+    justify-content: space-between;
+
+}
 
 .ui-card>footer {
     display: flex;
@@ -49,16 +54,16 @@ a {
 }
 
 @media (min-width: 40rem) {
-    .all-dishes {
+    .all-hikes {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 10px;
     }
 }
 @media (min-width: 60rem) {
-    .all-dishes {
+    .all-hikes {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         gap: 10px;
     }
 }

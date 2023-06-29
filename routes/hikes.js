@@ -3,13 +3,13 @@ const router = express.Router();
 const db = require("../db/index.js");
 const checkLogin = require('../middlewares/check_login.js')
 // ADD checkLogin after new, 
-router.get("/new", (req, res) => {
+router.get("/new", checkLogin, (req, res) => {
     res.render("new")
 })
 
 
 // Add checkLogin after "/",
-router.post("/", (req, res) => {
+router.post("/", checkLogin, (req, res) => {
     let name = req.body.name
     let image_url = req.body.image_url
     let location = req.body.location
@@ -41,7 +41,7 @@ router.get("/:id", (req, res) => {
 })
 
 // Add checkLogin after edis in router.get function 
-router.get("/:id/edit", (req, res) => {
+router.get("/:id/edit", checkLogin, (req, res) => {
     db.query(`SELECT * FROM hikes WHERE id = $1;`, [req.params.id], (err, dbRes) => {
         if (err) {
             console.log(err)
@@ -78,7 +78,7 @@ router.put("/:id", (req, res)  => {
 })
 
 // ADD checkLogin after id
-router.delete("/:id", (req, res) => {
+router.delete("/:id", checkLogin, (req, res) => {
     db.query(`DELETE FROM hikes WHERE id = $1;`, [req.params.id], (err, dbRes) => {
         res.redirect("/")
     })
